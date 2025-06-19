@@ -1,0 +1,43 @@
+I want to add a hover effect on each sidebar icon, to look like in this image
+
+
+
+
+
+Now I have a sidebar, I want to have an icon above which lets me expand the sidebar to look like in the image attached. The below is my current codes:
+
+<aside class="sidebar">
+    <nav class="nav-icons">
+        <!-- Expand icon goes here -->
+        <i class="fas fa-house-chimney"></i>       
+        <i class="fas fa-user-plus"></i>
+        <i class="fas fa-bed"></i>
+        <i class="fas fa-laptop-medical"></i>
+        <i class="fas fa-credit-card"></i>
+        <i class="fas fa-vial"></i>
+        <i class="fas fa-radiation"></i>
+        <i class="fas fa-briefcase-medical"></i>
+        <i class="fas fa-chart-bar"></i>
+        <i class="fas fa-brain"></i>
+    </nav>
+</aside> <!-- Sidebar -->
+
+.sidebar {
+    width: 80px;
+    margin: 10px; padding: 5px 5px;
+    border-radius: 10px;
+    color: white; background: var(--primary-color);
+    height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center;
+    position: fixed;
+  }
+  
+  .nav-icons {
+    display: flex; flex-direction: column;
+  }
+  .nav-icons i {
+    margin: 25px 0;
+    font-size: 25px;
+    cursor: pointer;
+  }
