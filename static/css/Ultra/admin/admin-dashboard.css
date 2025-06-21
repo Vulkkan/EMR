@@ -226,3 +226,13 @@ body {
   font-size: 16.3px;
   transition-duration: 400ms;
 }
+
+
+table {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px; margin-bottom: 10px;
+  padding-top: 10px; padding-bottom: 10px; 
+  padding-left: 40px; padding-right: 40px;
+}
