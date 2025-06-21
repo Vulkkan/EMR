@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patient</title>
 
-  <link rel="stylesheet" href="static/css/Ultra/admin/admin-dashboard.css" />
-  <!-- Sidebar -->
-  <link rel="stylesheet" href="static/css/Ultra/sidebar.css" />
+  <link rel="stylesheet" href="static/css/Ultra/general.css" />
+  <link rel="stylesheet" href="static/css/Ultra/components/sidebar.css" />
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Google fonts for icons -->
@@ -136,7 +136,7 @@
         <header class="header">
           <!-- Search -->
           <div class="search-user">
-            <input type="text" placeholder="Search by name, number or ID" />
+            <input type="text" placeholder="Search by name, number or ID">
           </div>
 
           <div>
@@ -150,9 +150,51 @@
             </span>
             </div>
         </header>
-      </div> <!-- Dashboard -->
-      </div> <!-- Main Content Div -->
 
+
+        <!-- Table -->
+        <table>
+          <!-- Table header -->
+          <tr>
+            <td></td>
+            <td>Name</td>
+            <td>ID</td>
+            <td>Age</td>
+            <td>Phone Number</td>
+            <td>Added Date</td>
+            <td>Status</td>
+            <td>Action</td>
+          </tr>
+          <!-- Row 1 -->
+          <tr>
+            <td>□</td>
+            <td>Yusuf Yusuf</td>
+            <td>ADH123456</td>
+            <td>27</td>
+            <td>LBN000123</td>
+            <td>May 27 2025</td>
+            <td>
+              <button class='active-button'>
+              <i class="fas fa-add"></i> 
+              Active
+            </button>
+          </td>
+          </tr>
+          <!-- Row 2 -->
+          <tr>
+            <td>□</td>
+            <td>Yusuf Yusuf</td>
+            <td>ADH123456</td>
+            <td>27</td>
+            <td>LBN000123</td>
+            <td>May 27 2025</td>
+            <td>
+              <button class='inactive-button'>X Inactive</button>
+            </td>
+          </tr>
+        </table> <!-- Table -->
+
+      </div> <!-- Dashboard -->
     </main>
 
     
