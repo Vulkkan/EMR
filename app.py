@@ -10,7 +10,12 @@ import model
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import json
+import os
 
+
+with open('config.json') as data_file:
+    config = json.load(data_file)
 
 app = FastAPI()
 
@@ -145,3 +150,7 @@ async def addPatientPage(request: Request):
 # @app.get("/{path}.html", response_class=HTMLResponse)
 # async def render_template(path: str, request: Request):
 #     return templates.TemplateResponse(f"{path}.html", {"request": request})
+
+
+if __name__ == '__main__':
+    app.run(debug=True,host=config['host'],port=config['port'])
