@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paediatric Clinic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 24px;
+    }
+
+    legend {
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    input[type="text"],
+    select {
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      color: #333;
+      flex: 1;
+      min-width: 180px;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px 16px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 10px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .plan-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .plan-buttons button {
+      background-color: #0366d6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+
+      .plan-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Paediatric Clinic Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Consultation Details</legend>
+        <div class="row">
+          <input type="text" id="visitDate" readonly />
+          <select>
+            <option disabled selected>Select Visit Type</option>
+            <option>New Case</option>
+            <option>Follow-up</option>
+            <option>Referral</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Presenting Complaint</legend>
+        <textarea placeholder="Describe presenting complaint..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>History of Present Illness</legend>
+        <textarea placeholder="Detail the history of present illness..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Past Medical History</legend>
+        <textarea placeholder="Any past illnesses, hospitalizations, etc..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Immunization History</legend>
+        <textarea placeholder="Enter immunization details..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Feeding History</legend>
+        <textarea placeholder="Breastfeeding, weaning, diet..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Growth & Development</legend>
+        <textarea placeholder="Milestones, delays, concerns..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Physical Examination</legend>
+        <textarea placeholder="Record physical findings here..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis</legend>
+        <textarea placeholder="Enter diagnosis..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Treatment Plan</legend>
+        <textarea placeholder="Medications, follow-up, etc..."></textarea>
+
+        <div class="plan-buttons">
+          <button type="button" onclick="location.href='lab.html'">Lab</button>
+          <button type="button" onclick="location.href='xray.html'">X-Ray</button>
+          <button type="button" onclick="location.href='medication.html'">Medication</button>
+          <button type="button" onclick="location.href='admission.html'">Admission</button>
+          <button type="button" onclick="location.href='referral.html'">Referral</button>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Set current date in visitDate field
+    window.addEventListener('DOMContentLoaded', () => {
+      const dateField = document.getElementById('visitDate');
+      const today = new Date().toISOString().split('T')[0];
+      dateField.value = today;
+    });
+  </script>
+</body>
+</html>

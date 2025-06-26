@@ -1,0 +1,42 @@
+/* Style the select dropdown */
+.dataTables_length label select {
+    background-color: #f8f9fa; /* Light background */
+    color: #333;
+    border: 1px solid #ced4da;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Style the "Show entries" label */
+.dataTables_length label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Style the info text at bottom */
+.dataTables_info {
+    font-style: italic;
+    color: #666;
+    font-size: 13px;
+}
+
+.datatable4 {
+    width: 100%;
+}
+
+.btn-xs {
+    background: var(--primary-color); color: white;
+    border: solid #f5f0ff 0px;
+    border-radius: 8px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.form-control input-sm {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

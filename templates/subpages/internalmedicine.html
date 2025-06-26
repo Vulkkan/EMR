@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Medicine Clinic Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-header h2 { margin: 0; }
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    input[type="text"], select, textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+    input[type="text"] {
+      appearance: none;
+      background-image: none;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='gray'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 8px 10px;
+    }
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Internal Medicine Clinic Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+    <form>
+      <fieldset>
+        <legend>Patient History</legend>
+        <div class="row">
+          <textarea placeholder="Chief Complaint" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="History of Present Illness" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Past Medical History (e.g., Hypertension, Diabetes)" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Family History / Social History" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <select><option disabled selected>Alcohol Use</option><option>None</option><option>Occasional</option><option>Frequent</option></select>
+          <select><option disabled selected>Smoking</option><option>Non-smoker</option><option>Former Smoker</option><option>Current Smoker</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Vital Signs</legend>
+        <div class="row">
+          <input type="text" placeholder="Blood Pressure (e.g., 120/80)" />
+          <input type="text" placeholder="Heart Rate (bpm)" />
+          <input type="text" placeholder="Temperature (°C)" />
+          <input type="text" placeholder="Respiratory Rate" />
+          <input type="text" placeholder="Weight (kg)" />
+          <input type="text" placeholder="Height (cm)" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Systemic Examination</legend>
+        <div class="row">
+          <textarea placeholder="Cardiovascular" rows="2"></textarea>
+          <textarea placeholder="Respiratory" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Abdomen" rows="2"></textarea>
+          <textarea placeholder="Neurological" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Investigations & Plan</legend>
+        <div class="row">
+          <textarea placeholder="Laboratory Investigations" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Diagnosis" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Management Plan / Medications" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <a href="#" class="action-btn">Refer to Specialist</a>
+          <a href="#" class="action-btn">Admit</a>
+          <a href="#" class="action-btn">Discharge</a>
+          <a href="#" class="action-btn">Order Labs</a>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+ß

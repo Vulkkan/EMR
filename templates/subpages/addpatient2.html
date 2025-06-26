@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Patient</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 { margin: 0; }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    select {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: white url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+      background-size: 16px 16px;
+      padding-right: 30px;
+    }
+
+    input[disabled] {
+      background-color: #f0f0f0;
+    }
+
+    input.flatpickr-input {
+      background: white url("data:image/svg+xml;utf8,<svg fill='gray' xmlns='http://www.w3.org/2000/svg' height='18' width='18' viewBox='0 0 24 24'><path d='M7 10h5v5H7z'/><path d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM19 19H5V8h14v11z'/></svg>") no-repeat right 10px center;
+      background-size: 18px 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Add Patient</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form class="form-section">
+      <fieldset>
+        <legend>Patient Information:</legend>
+        <div class="row">
+          <select id="title" required>
+  <option disabled selected>Title *</option>
+  <option>Mr</option>
+  <option>Mrs</option>
+  <option>Miss</option>
+  <option>Master</option>
+  <option>Dr</option>
+  <option>Prof</option>
+</select>
+
+          <input type="text" placeholder="First Name *" required />
+          <input type="text" placeholder="Last Name *" required />
+          <input type="text" placeholder="Middle Name" />
+        </div>
+        <div class="row">
+          <input type="text" id="dob" placeholder="Date of Birth *" required />
+          <input type="text" id="age" placeholder="Auto Calc. Age" disabled />
+          <select id="gender" required>
+  <option disabled selected>Gender *</option>
+  <option>Male</option>
+  <option>Female</option>
+  <option>Other</option>
+</select>
+
+          <input type="text" placeholder="Phone Number *" required />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Address Information:</legend>
+        <div class="row">
+          <select id="country"><option disabled selected>Select Country</option></select>
+          <select id="state" disabled><option disabled selected>Select State</option></select>
+          <select id="city" disabled><option disabled selected>Select City</option></select>
+          <input type="text" id="mainAddress" placeholder="Enter Address" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Next of Kin Information:</legend>
+        <div class="row">
+          <input type="text" placeholder="Full Name" />
+          <select>
+            <option disabled selected>Relationship</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Spouse</option>
+            <option>Sibling</option>
+            <option>Child</option>
+            <option>Guardian</option>
+            <option>Other</option>
+          </select>
+          <input type="text" placeholder="Phone Number" />
+          <label class="checkbox-label">
+            <input type="checkbox" id="sameAddressCheckbox" checked /> <span>SAME</span>
+          </label>
+        </div>
+        <input type="text" id="kinAddress" placeholder="Enter Address" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Other Information:</legend>
+        <div class="row">
+          <select>
+            <option disabled selected>Marital Status</option>
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+          </select>
+          <select>
+            <option disabled selected>Language</option>
+            <option>English</option>
+            <option>Yoruba</option>
+            <option>Igbo</option>
+            <option>Hausa</option>
+            <option>Pidgin</option>
+            <option>Others...</option>
+          </select>
+          <select id="occupation">
+            <option disabled selected>Occupation</option>
+          </select>
+          <select>
+            <option disabled selected>Disability</option>
+            <option>None</option>
+            <option>Visual</option>
+            <option>Hearing</option>
+            <option>Mobility</option>
+            <option>Speech</option>
+            <option>Mental</option>
+          </select>
+        </div>
+        <div class="row">
+          <select>
+            <option disabled selected>Religion</option>
+            <option>Christianity</option>
+            <option>Islam</option>
+            <option>Traditional</option>
+            <option>None</option>
+            <option>Others...</option>
+          </select>
+          <select>
+            <option disabled selected>Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+          <select>
+            <option disabled selected>Genotype</option>
+            <option>AA</option>
+            <option>AS</option>
+            <option>SS</option>
+            <option>AC</option>
+            <option>SC</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+  <legend>Registration Type:</legend>
+  <label for="patientType">Patient Card Type:</label>
+  <select id="patientType" name="patientType" required>
+    <option disabled selected>Select patient card type</option>
+    <option value="general_outpatient">General Outpatient</option>
+    <option value="emergency">Emergency</option>
+    <option value="inpatient">Inpatient</option>
+    <option value="outpatient">Outpatient</option>
+    <option value="paediatric">Paediatric</option>
+    <option value="antenatal">Antenatal (ANC)</option>
+    <option value="postnatal">Postnatal</option>
+    <option value="maternity">Maternity</option>
+    <option value="surgical">Surgical</option>
+    <option value="medical">Medical</option>
+    <option value="dental">Dental</option>
+    <option value="eye">Eye Clinic</option>
+    <option value="ent">ENT (Ear, Nose & Throat)</option>
+    <option value="orthopaedic">Orthopaedic</option>
+    <option value="physiotherapy">Physiotherapy</option>
+    <option value="mental_health">Mental Health / Psychiatry</option>
+    <option value="family_planning">Family Planning</option>
+    <option value="hiv_clinic">HIV / ART Clinic</option>
+    <option value="immunization">Immunization</option>
+    <option value="dermatology">Dermatology / Skin Clinic</option>
+    <option value="cardiology">Cardiology</option>
+    <option value="oncology">Oncology</option>
+    <option value="urology">Urology</option>
+    <option value="nephrology">Nephrology (Kidney Clinic)</option>
+    <option value="endocrinology">Endocrinology</option>
+    <option value="neurology">Neurology</option>
+    <option value="geriatrics">Geriatrics</option>
+    <option value="others">Others...</option>
+  </select>
+</fieldset>
+
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const countryStateCity = {
+  "Nigeria": {
+    "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
+    "Adamawa": ["Demsa", "Fufure", "Ganye", "Gombi", "Girei", "Hong", "Jada", "Lamurde", "Madagali", "Maiha", "Mayo Belwa", "Michika", "Mubi North", "Mubi South", "Numan", "Shelleng", "Song", "Toungo", "Yola North", "Yola South"],
+    "Akwa Ibom": ["Abak", "Eastern Obolo", "Eket", "Esit Eket", "Essien Udim", "Etim Ekpo", "Etinan", "Ibeno", "Ibesikpo Asutan", "Ibiono‑Ibom", "Ika", "Ikono", "Ikot Abasi", "Ikot Ekpene", "Ini", "Itu", "Mbo", "Mkpat‑Enin", "Nsit‑Atai", "Nsit‑Ibom", "Nsit‑Ubium", "Obot Akara", "Okobo", "Onna", "Oron", "Oruk Anam", "Udung‑Uko", "Ukanafun", "Uruan", "Urue‑Offong/Oruko", "Uyo"],
+    "Anambra": ["Aguata", "Anambra East", "Anambra West", "Anaocha", "Awka North", "Awka South", "Ayamelum", "Dunukofia", "Ekwusigo", "Idemili North", "Idemili South", "Ihiala", "Njikoka", "Nnewi North", "Nnewi South", "Ogbaru", "Onitsha North", "Onitsha South", "Orumba North", "Orumba South", "Oyi"],
+    "Bauchi": ["Alkaleri", "Bauchi", "Bogoro", "Damban", "Darazo", "Dass", "Gamawa", "Ganjuwa", "Giade", "Itas/Gadau", "Jama’are", "Katagum", "Kirfi", "Misau", "Ningi", "Shira", "Tafawa‑Balewa", "Toro", "Warji", "Zaki"],
+    "Bayelsa": ["Brass", "Ekeremor", "Kolokuma/Opokuma", "Nembe", "Ogbia", "Sagbama", "Southern Ijaw", "Yenagoa"],
+    "Benue": ["Ado", "Agatu", "Apa", "Buruku", "Gboko", "Guma", "Gwer East", "Gwer West", "Katsina‑Ala", "Konshisha", "Kwande", "Logo", "Makurdi", "Obi", "Ogbadibo", "Ohimini", "Oju", "Okpokwu", "Oturkpo", "Tarka", "Ukum", "Ushongo", "Vandeikya"],
+    "Borno": ["Abadam", "Askira/Uba", "Bama", "Bayo", "Biu", "Chibok", "Damboa", "Dikwa", "Gubio", "Guzamala", "Gwoza", "Hawul", "Jere", "Kaga", "Kala/Balge", "Konduga", "Kukawa", "Kwaya Kusar", "Mafa", "Magumeri", "Maiduguri", "Marte", "Mobbar", "Monguno", "Ngala", "Nganzai", "Shani"],
+    "Cross River": ["Abi", "Akamkpa", "Akpabuyo", "Bakassi", "Bekwara", "Biase", "Boki", "Calabar Municipal", "Calabar South", "Etung", "Ikom", "Obanliku", "Obubra", "Obudu", "Odukpani", "Ogoja", "Yakuur", "Yala"],
+    "Delta": ["Aniocha North", "Aniocha South", "Bomadi", "Burutu", "Ethiope East", "Ethiope West", "Ika North East", "Ika South", "Isoko North", "Isoko South", "Ndokwa East", "Ndokwa West", "Okpe", "Oshimili North", "Oshimili South", "Patani", "Sapele", "Udu", "Ughelli North", "Ughelli South", "Ukwuani", "Uvwie", "Warri North", "Warri South", "Warri South West"],
+    "Ebonyi": ["Abakaliki", "Afikpo North", "Afikpo South", "Ebonyi", "Ezza North", "Ezza South", "Ikwo", "Ishielu", "Ivo", "Izzi", "Ohaozara", "Ohaukwu", "Onicha"],
+    "Edo": ["Akoko‑Edo", "Egor", "Esan Central", "Esan North‑East", "Esan South‑East", "Esan West", "Etsako Central", "Etsako East", "Etsako West", "Igueben", "Ikpoba‑Okha", "Oredo", "Orhionmwon", "Ovia North‑East", "Ovia South‑West", "Owan East", "Owan West", "Uhunmwonde"],
+    "Ekiti": ["Ado Ekiti", "Efon", "Ekiti East", "Ekiti South‑West", "Ekiti West", "Emure", "Gbonyin", "Ido‑Osi", "Ijero", "Ikere", "Ikole", "Ilejemeje", "Irepodun/Ifelodun", "Ise/Orun", "Moba", "Oye"],
+    "Enugu": ["Aninri", "Awgu", "Enugu East", "Enugu North", "Enugu South", "Ezeagu", "Igbo‑Etiti", "Igbo‑Eze North", "Igbo‑Eze South", "Isi‑Uzo", "Nkanu East", "Nkanu West", "Nsukka", "Oji‑River", "Udenu", "Udi", "Uzo‑Uwani"],
+    "FCT": ["Abaji", "Abuja Municipal", "Bwari", "Gwagwalada", "Kuje", "Kwali"],
+    "Gombe": ["Akko", "Balanga", "Billiri", "Dukku", "Funakaye", "Gombe", "Kaltungo", "Kwami", "Nafada", "Shongom", "Yamaltu/Deba"],
+    "Imo": ["Abo‑Mbaise", "Ahiazu‑Mbaise", "Ehime‑Mbano", "Ezinihitte", "Ideato North", "Ideato South", "Ihitte/Uboma", "Ikeduru", "Isiala‑Mbano", "Isu", "Mbaitoli", "Ngor‑Okpala", "Njaba", "Nkwerre", "Nwangele", "Obowo", "Oguta", "Ohaji/Egbema", "Okigwe", "Orlu", "Orsu", "Oru East", "Oru West", "Owerri Municipal", "Owerri North", "Owerri West", "Unuimo"],
+    "Jigawa": ["Auyo", "Babura", "Biriniwa", "Birnin Kudu", "Buji", "Dutse", "Gagarawa", "Garki", "Gumel", "Guri", "Gwaram", "Gwiwa", "Hadejia", "Jahun", "Kafin Hausa", "Kaugama", "Kazaure", "Kiri Kasama", "Kiyawa", "Maigatari", "Malam Madori", "Miga", "Ringim", "Roni", "Sule Tankarkar", "Taura", "Yankwashi"],
+    "Kaduna": ["Birnin‑Gwari", "Chikun", "Giwa", "Igabi", "Ikara", "Jaba", "Jema’a", "Kachia", "Kaduna North", "Kaduna South", "Kagarko", "Kajuru", "Kaura", "Kauru", "Kubau", "Kudan", "Lere", "Makarfi", "Sabon Gari", "Sanga", "Soba", "Zangon Kataf", "Zango"],
+    "Kano": ["Ajingi", "Albasu", "Bagwai", "Bebeji", "Bichi", "Bunkure", "Dala", "Dambatta", "Dawakin Kudu", "Dawakin Tofa", "Doguwa", "Fagge", "Gabasawa", "Garko", "Garun Mallam", "Gaya", "Gezawa", "Gwale", "Gwarzo", "Kabo", "Kano Municipal", "Karaye", "Kibiya", "Kiru", "Kumbotso", "Kunchi", "Kura", "Madobi", "Makoda", "Minjibir", "Nasarawa", "Rano", "Rimin Gado", "Rogo", "Shanono", "Sumaila", "Takai", "Tarauni", "Tofa", "Tsanyawa", "Tudun Wada", "Ungogo", "Warawa", "Wudil"],
+    "Katsina": ["Bakori", "Batagarawa", "Batsari", "Baure", "Bindawa", "Charanchi", "Dandume", "Dandume", "Dan Musa", "Daura", "Dutsi", "Dutsin Ma", "Faskari", "Funtua", "Ingawa", "Jibia", "Kafur", "Kaita", "Kankara", "Kankia", "Katsina", "Kurfi", "Kusada", "Mai’Adua", "Malumfashi", "Mani", "Mashi", "Musawa", "Rimi", "Sabuwa", "Safana", "Sandamu", "Zango"],
+    "Kebbi": ["Aleiro", "Arewa Dandi", "Argungu", "Augie", "Bagudo", "Birnin Kebbi", "Bunza", "Dandi", "Fakai", "Gwandu", "Jega", "Kalgo", "Koko/Besse", "Maiyama", "Ngaski", "Sakaba", "Shanga", "Suru", "Wasagu/Danko", "Yauri", "Zuru"],
+    "Kogi": ["Adavi", "Ajaokuta", "Ankpa", "Bassa", "Dekina", "Ibaji", "Idah", "Igalamela-Odolu", "Ijumu", "Kabba/Bunu", "Kogi", "Lokoja", "Mopa-Muro", "Ofu", "Ogori/Magongo", "Okehi", "Okene", "Olamaboro", "Omala", "Yagba East", "Yagba West"],
+    "Kwara": ["Asa", "Baruten", "Edu", "Ekiti", "Ifelodun", "Ilorin East", "Ilorin South", "Ilorin West", "Irepodun", "Isin", "Kaiama", "Moro", "Offa", "Oke Ero", "Oyun", "Pategi"],
+    "Lagos": ["Agege", "Ajeromi‑Ifelodun", "Alimosho", "Amuwo‑Odofin", "Apapa", "Badagry", "Epe", "Eti‑Osa", "Ibeju/Lekki", "Ifako‑Ijaiye", "Ikeja", "Ikorodu", "Kosofe", "Lagos Island", "Lagos Mainland", "Mushin", "Ojo", "Oshodi‑Isolo", "Shomolu", "Surulere"],
+    "Nasarawa": ["Akwanga", "Awe", "Doma", "Karu", "Keana", "Keffi", "Kokona", "Lafia", "Nasarawa", "Nasarawa‑Eggon", "Obi", "Toto", "Wamba"],
+    "Niger": ["Agaie", "Agwara", "Bida", "Borgu", "Bosso", "Chanchaga", "Edati", "Gbako", "Gurara", "Katcha", "Kontagora", "Lapai", "Lavun", "Magama", "Mariga", "Mashegu", "Mokwa", "Munya", "Paikoro", "Rafi", "Rijau", "Shiroro", "Suleja", "Tafa", "Wushishi"],
+    "Ogun": ["Abeokuta North", "Abeokuta South", "Ado‑Odo/Ota", "Ewekoro", "Ifo", "Ijebu East", "Ijebu North", "Ijebu North East", "Ijebu Ode", "Ikenne", "Imeko Afon", "Ipokia", "Obafemi‑Owode", "Odeda", "Odogbolu", "Ogun Waterside", "Remo North", "Sagamu", "Yewa North", "Yewa South"],
+    "Ondo": ["Akoko North East", "Akoko North West", "Akoko South East", "Akoko South West", "Akure North", "Akure South", "Ese‑Odo", "Idanre", "Ifedore", "Ilaje", "Ile‑Oluji/Okeigbo", "Irele", "Odigbo", "Okitipupa", "Ondo East", "Ondo West", "Ose", "Owo"],
+    "Osun": ["Aiyedaade", "Aiyedire", "Atakunmosa East", "Atakunmosa West", "Boluwaduro", "Boripe", "Ede North", "Ede South", "Egbedore", "Ejigbo", "Ife Central", "Ifedayo", "Ife East", "Ifelodun", "Ife North", "Ife South", "Ila", "Ilesha East", "Ilesha West", "Irepodun", "Irewole", "Isokan", "Iwo", "Obokun", "Odo‑Otin", "Ola‑Oluwa", "Olorunda", "Oriade", "Orolu", "Osogbo"],
+    "Oyo": ["Afijio", "Akinyele", "Atiba", "Atisbo", "Egbeda", "Ibadan North", "Ibadan North East", "Ibadan North West", "Ibadan South East", "Ibadan South West", "Ibarapa Central", "Ibarapa East", "Ibarapa North", "Ido", "Irepo", "Iseyin", "Itesiwaju", "Iwajowa", "Kajola", "Lagelu", "Ogbomosho North", "Ogbomosho South", "Ogo Oluwa", "Olorunsogo", "Oluyole", "Ona Ara", "Orelope", "Ori Ire", "Oyo East", "Oyo West", "Saki East", "Saki West", "Surulere"],
+    "Plateau": ["Barkin Ladi", "Bassa", "Bokkos", "Jos East", "Jos North", "Jos South", "Kanam", "Kanke", "Langtang North", "Langtang South", "Mangu", "Mikang", "Pankshin", "Qua’an Pan", "Riyom", "Shendam", "Wase"],
+    "Rivers": ["Abua‑Odual", "Ahoada East", "Ahoada West", "Akuku Toru", "Andoni", "Asari‑Toru", "Bonny", "Degema", "Eleme", "Emohua", "Etche", "Gokana", "Ikwerre", "Khana", "Obio/Akpor", "Ogba‑Egbema‑Ndoni", "Ogu‑Bolo", "Okrika", "Omuma", "Opobo/Nkoro", "Oyigbo", "Port‑Harcourt", "Tai"],
+    "Sokoto": ["Binji", "Bodinga", "Dange Shuni", "Gada", "Goronyo", "Gudu", "Gwadabawa", "Illela", "Isa", "Kebbe", "Kware", "Rabah", "Sabon Birni", "Shagari", "Silame", "Sokoto North", "Sokoto South", "Tambuwal", "Tangaza", "Tureta", "Wamakko", "Wurno", "Yabo"],
+    "Taraba": ["Ardo‑Kola", "Bali", "Donga", "Gashaka", "Gassol", "Ibi", "Jalingo", "Karim Lamido", "Kumi", "Lau", "Sardauna", "Takum", "Ussa", "Wukari", "Yorro", "Zing"],
+    "Yobe": ["Bade", "Bursari", "Damaturu", "Fika", "Fune", "Geidam", "Gujba", "Gulani", "Jakusko", "Karasuwa", "Machina", "Nangere", "Nguru", "Potiskum", "Tarmuwa", "Yunusari", "Yusufari"],
+    "Zamfara": ["Anka", "Bakura", "Bungudu", "Gummi", "Gusau", "Kaura Namoda", "Maradun", "Maru", "Shinkafi", "Talata Mafara", "Chafe", "Zurmi"]
+  }
+};
+
+
+    const occupations = [
+  "Accountant", "Actor", "Actuary", "Agricultural Extension Officer", "Air Traffic Controller",
+  "Architect", "Artist", "Athlete", "Auto Mechanic", "Baker", "Banker", "Barber",
+  "Bricklayer", "Business Analyst", "Butcher", "Carpenter", "Cashier", "Chef", "Cleaner",
+  "Clergy", "Commercial Driver", "Construction Worker", "Counselor", "Customer Service Agent",
+  "Data Analyst", "Dentist", "Designer", "Doctor", "Dry Cleaner", "Economist", "Electrician",
+  "Entrepreneur", "Event Planner", "Fashion Designer", "Farmer", "Fisherman", "Fitness Trainer",
+  "Flight Attendant", "Graphic Designer", "Hairdresser", "Human Resource Manager", "Influencer",
+  "IT Specialist", "Journalist", "Judge", "Laborer", "Lawyer", "Lecturer", "Librarian",
+  "Logistics Manager", "Makeup Artist", "Marketer", "Mechanic", "Medical Laboratory Scientist",
+  "Miner", "Model", "Musician", "Nanny", "Nurse", "On-Air Personality", "Painter",
+  "Pastor", "Petty Trader", "Pharmacist", "Photographer", "Pilot", "Plumber", "Police Officer",
+  "Politician", "Printer", "Product Manager", "Professor", "Real Estate Agent", "Receptionist",
+  "Researcher", "Sales Representative", "Security Guard", "Seamstress/Tailor", "Social Media Manager",
+  "Software Developer", "Soldier", "Statistician", "Student", "Surgeon", "Surveyor", "Teacher",
+  "Trader", "Traffic Officer", "UI/UX Designer", "Veterinarian", "Video Editor", "Vulcanizer",
+  "Waiter", "Waste Collector", "Welder", "YouTuber", "Zoologist"
+];
+
+
+    const countrySelect = document.getElementById("country");
+    const stateSelect = document.getElementById("state");
+    const citySelect = document.getElementById("city");
+    const occupationSelect = document.getElementById("occupation");
+
+    Object.keys(countryStateCity).forEach(c => {
+      const opt = document.createElement("option");
+      opt.textContent = c; opt.value = c;
+      countrySelect.appendChild(opt);
+    });
+
+    occupations.forEach(o => {
+      const opt = document.createElement("option");
+      opt.textContent = o;
+      occupationSelect.appendChild(opt);
+    });
+
+    countrySelect.addEventListener("change", () => {
+      stateSelect.innerHTML = '<option disabled selected>Select State</option>';
+      citySelect.innerHTML = '<option disabled selected>Select City</option>';
+      stateSelect.disabled = false;
+      citySelect.disabled = true;
+      Object.keys(countryStateCity[countrySelect.value]).forEach(state => {
+        const opt = document.createElement("option");
+        opt.textContent = state;
+        stateSelect.appendChild(opt);
+      });
+    });
+
+    stateSelect.addEventListener("change", () => {
+      citySelect.innerHTML = '<option disabled selected>Select City</option>';
+      citySelect.disabled = false;
+      countryStateCity[countrySelect.value][stateSelect.value].forEach(city => {
+        const opt = document.createElement("option");
+        opt.textContent = city;
+        citySelect.appendChild(opt);
+      });
+    });
+
+    document.getElementById("sameAddressCheckbox").addEventListener("change", () => {
+      const main = document.getElementById("mainAddress");
+      const kin = document.getElementById("kinAddress");
+      kin.value = sameAddressCheckbox.checked ? main.value : '';
+    });
+
+    document.getElementById("mainAddress").addEventListener("input", () => {
+      if (sameAddressCheckbox.checked)
+        document.getElementById("kinAddress").value = mainAddress.value;
+    });
+
+    flatpickr("#dob", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates, dateStr) {
+        const birthDate = new Date(dateStr);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+        document.getElementById("age").value = age + " years";
+      }
+    });
+    document.getElementById("title").addEventListener("change", function () {
+  const title = this.value;
+  const gender = document.getElementById("gender");
+
+  if (["Mr", "Master"].includes(title)) {
+    gender.value = "Male";
+  } else if (["Mrs", "Miss"].includes(title)) {
+    gender.value = "Female";
+  } else {
+    gender.value = ""; // Do not force anything
+  }
+});
+
+  </script>
+</body>
+</html>

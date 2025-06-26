@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMC Clinic Dashboard</title>
+  
+  <!-- =============== STYLES ===============-->
+  <!-- Google fonts for icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <!-- =============== Main Styles ===============-->
+  <link href="{{ url_for('static', path='styles/components/sidebar.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', path='styles/components/dashboard.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', path='styles/general.css') }}" rel="stylesheet" type="text/css" />
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Sidebar header -->
+      <header class="sidebar-header">
+        <a>EMR Clinic</a>
+      </header>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list primary-nav">
+          <!-- Dashboard -->
+          <li class="nav-item">
+            <a href="{{ url_for('home') }}" class="nav-link" style="background: #78a8cc;">
+              <i class="fas fa-house-chimney"></i> 
+            <span class="nav-label">Dashboard</span>
+          </a>
+          <span class="nav-tooltip">Dashboard</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('patientPage') }}" class="nav-link">
+              <i class="fas fa-user-plus"></i> 
+            <span class="nav-label">Patient</span>
+          </a>
+          <span class="nav-tooltip">Patient</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('admissionPage') }}" class="nav-link">
+              <i class="fas fa-bed"></i> 
+            <span class="nav-label">Admission</span>
+          </a>
+          <span class="nav-tooltip">Admission</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('appointmentsPage') }}" class="nav-link">
+              <i class="fas fa-laptop-medical"></i> 
+            <span class="nav-label">Appointments</span>
+          </a>
+          <span class="nav-tooltip">Appointments</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('billingsPage') }}" class="nav-link">
+              <i class="fas fa-credit-card"></i> 
+            <span class="nav-label">Billings</span>
+          </a>
+          <span class="nav-tooltip">Billings</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('labordersPage') }}" class="nav-link">
+              <i class="fas fa-flask"></i> 
+            <span class="nav-label">Lab Orders</span>
+          </a>
+          <span class="nav-tooltip">Lab Orders</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('radiologyPage') }}" class="nav-link">
+              <i class="fas fa-radiation"></i> 
+            <span class="nav-label">Radiology Orders</span>
+          </a>
+          <span class="nav-tooltip">Radiology Orders</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('pharmacyPage') }}" class="nav-link">
+              <i class="fas fa-briefcase-medical"></i> 
+            <span class="nav-label">Pharmacy</span>
+          </a>
+          <span class="nav-tooltip">Pharmacy</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('statisticsPage') }}" class="nav-link">
+              <i class="fas fa-chart-bar"></i> 
+            <span class="nav-label">Statistics</span>
+          </a>
+          <span class="nav-tooltip">Statistics</span>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url_for('rootPage') }}" class="nav-link">
+              <i class="fas fa-brain"></i> 
+            <span class="nav-label">Root</span>
+          </a>
+          <span class="nav-tooltip">Root</span>
+          </li>
+        </ul>
+      </nav>
+    </aside> <!-- Sidebar -->
+
+
+    <!-- Main Content -->
+    <main class="main">
+      <div class="profile-div">
+        <span class="nav-icon material-symbols-rounded"></span>
+        User
+      </div>
+
+      <div class="page-title">
+        <header class="header">
+          <h1>Welcome back, Mr. Yusuf Yusuf</h1>
+          <!-- Search -->
+          <div class="search-user">
+            <input type="text" placeholder="Search by name, number or ID" />
+          </div>
+        </header>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="dashboardd">
+        <!-- Dashboard Cards First Row-->
+        <section class="cards">
+            <!-- Total Treatments -->
+            <div class="card">
+              <h3>Total Treatments</h3>
+              <div class='giant-text' id="prescribescount"></div>
+              <ul>
+                <li>Malaria</li>
+                <li>Hypertension</li>
+              </ul>
+              <a href="{{ url_for('billingsPage') }}">View more</a>
+            </div>
+            
+            <!-- Total Patients -->
+            <div class="card">
+              <h3>Total Patients</h3>
+              <ul>
+                <li>
+                  All patients 
+                  <span><div class='dashboard-values' id="patientcount"></div></span>
+                </li>
+
+                <li>
+                  In-patients <span>-</span>
+                </li>
+
+                <li>
+                  Discharged <span>-</span>
+                </li>
+
+              </ul>
+              <a href="{{ url_for('patientPage') }}">View more</a>
+            </div>
+        </section> <!-- Dashboard Cards First Row-->
+
+
+        <!-- Dashboard Cards Second Row-->
+        <section class="cards">
+            <!-- Total Appointments -->
+            <div class="card">
+              <h3>Total Appointments</h3>
+              <div class='giant-text' id="appointmentcount"></div>
+              <!-- <ul>
+                <li>
+                  Patients 
+                  <span><div class='dashboard-values' id="appointmentcount"></div></span>
+                </li>
+              </ul> -->
+              <a href="{{ url_for('appointmentsPage') }}">View All</a>
+            </div>
+
+            <!-- Messages -->
+          <div class="card">
+            <h3>Messages</h3>
+            <h3 style='color: #99a1af; text-align: center;'>Nothing to see</h3>
+          </div>
+
+        </section> <!-- Dashboard Cards Second Row-->
+
+
+
+        <!-- Quick Actions and Top Services -->
+        <section class="cards">
+
+          <!-- Quick Actions -->
+          <div class="card quickActionsCard">
+            <h3 style='color: rgb(0, 0, 0);''>Quick Actions</h3>
+            <ul>
+              <li>
+                  <h3 style='color: rgb(0, 0, 0); font-size: 20px;'>Add Patient</h3>
+                  <span>
+                    <a href="{{ url_for('addPatientPage') }}">
+                      <button class='add-button'>
+                        <i class="fas fa-add"></i> 
+                        Add
+                      </button>
+                    </a>
+                  </span>
+              </li>
+              <li>
+                <h3 style='color: rgb(0, 0, 0); font-size: 20px;'>Create an appointment<h3>
+                  <span>
+                    <button class='add-button'>
+                      <i class="fas fa-add"></i> 
+                      Create
+                    </button>
+                  </span>
+              </li>
+              <li>
+                <h3 style='color: rgb(0, 0, 0); font-size: 20px'>Generate A Bill</h3>
+                <span>
+                  <button class='add-button'>
+                    <i class="fas fa-add"></i> 
+                    Generate
+                  </button>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Top Services -->
+          <div class="card" style="background-color: white;">
+            <h3 style="color: black;">Top Services</h3>
+            <h3 style='color: #99a1af; text-align: center;'>Nothing to see</h3>
+          </div>
+        </section> <!-- Quick Actions and Top Services -->
+        </div> <!-- Dashboard -->
+
+      </div> <!-- Main Content Div -->
+    </main>
+
+    
+
+  </div>
+
+  <!-- =============== VENDOR SCRIPTS ===============-->
+  <!-- MODERNIZR-->
+  <script src="vendor/modernizr/modernizr.custom.js"></script>
+  <!-- JQUERY-->
+  <script src="vendor/jquery/dist/jquery.js"></script>
+  <!-- BOOTSTRAP-->
+  <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- STORAGE API-->
+  <script src="vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+  <!-- JQUERY EASING-->
+  <script src="vendor/jquery.easing/js/jquery.easing.js"></script>
+  <!-- ANIMO-->
+  <script src="vendor/animo.js/animo.js"></script>
+  <!-- LOCALIZE-->
+  <script src="vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>
+  
+  <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+  <!-- =============== APP SCRIPTS ===============-->
+  <script src="app/js/app.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+.dashboard-values {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.giant-text {
+    display: flex;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+}

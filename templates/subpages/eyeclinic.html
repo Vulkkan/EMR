@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eye Clinic Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 { margin: 0; }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='gray'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 8px 10px;
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Eye Clinic (Ophthalmology) Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Visual Acuity & Vital Signs:</legend>
+        <div class="row">
+          <select><option disabled selected>Right Eye (OD) Vision</option><option>6/6</option><option>6/9</option><option>6/12</option><option>6/18</option><option>6/24</option><option>6/36</option><option>6/60</option><option>CF</option><option>HM</option><option>PL</option><option>NPL</option></select>
+          <select><option disabled selected>Left Eye (OS) Vision</option><option>6/6</option><option>6/9</option><option>6/12</option><option>6/18</option><option>6/24</option><option>6/36</option><option>6/60</option><option>CF</option><option>HM</option><option>PL</option><option>NPL</option></select>
+          <select><option disabled selected>Visual Acuity Method</option><option>Snellen</option><option>LogMAR</option><option>Tumbling E</option></select>
+          <input type="text" placeholder="Blood Pressure (e.g., 120/80)" />
+          <input type="text" placeholder="Pulse Rate (bpm)" />
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Temperature (°C)" />
+          <input type="text" placeholder="Weight (kg)" />
+          <input type="text" placeholder="Height (cm)" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ocular History:</legend>
+        <div class="row">
+          <select><option disabled selected>Do you wear glasses?</option><option>Yes</option><option>No</option></select>
+          <select><option disabled selected>Do you wear contact lenses?</option><option>Yes</option><option>No</option></select>
+          <select><option disabled selected>Type of Lens</option><option>Soft</option><option>Rigid</option><option>Bifocal</option><option>Multifocal</option><option>Progressive</option></select>
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Previous Eye Surgeries (e.g., Cataract, LASIK)" />
+          <input type="text" placeholder="Eye Trauma Description" />
+          <select><option disabled selected>Color Vision Test Done?</option><option>Yes</option><option>No</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Eye Symptoms:</legend>
+        <div class="row">
+          <label><input type="checkbox" /> Blurred Vision</label>
+          <label><input type="checkbox" /> Eye Pain</label>
+          <label><input type="checkbox" /> Redness</label>
+          <label><input type="checkbox" /> Itching</label>
+          <label><input type="checkbox" /> Discharge</label>
+          <label><input type="checkbox" /> Light Sensitivity</label>
+          <label><input type="checkbox" /> Floaters</label>
+          <label><input type="checkbox" /> Flashes of Light</label>
+          <label><input type="checkbox" /> Tearing</label>
+          <label><input type="checkbox" /> Night Blindness</label>
+          <label><input type="checkbox" /> Glare</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Examination Findings:</legend>
+        <div class="row">
+          <input type="text" placeholder="Eyelid / Lashes" />
+          <input type="text" placeholder="Conjunctiva / Sclera" />
+          <input type="text" placeholder="Cornea / Anterior Chamber" />
+          <select><option disabled selected>Lens Status</option><option>Clear</option><option>Early Cataract</option><option>Mature Cataract</option><option>Pseudophakia</option><option>Aphakia</option></select>
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Intraocular Pressure (IOP)" />
+          <input type="text" placeholder="Retina / Macula" />
+          <select><option disabled selected>Optic Nerve / Cup:Disc Ratio</option><option>0.1</option><option>0.2</option><option>0.3</option><option>0.4</option><option>0.5</option><option>0.6</option><option>0.7</option><option>0.8</option><option>0.9</option></select>
+          <select><option disabled selected>Extraocular Movements</option><option>Full</option><option>Restricted - Left</option><option>Restricted - Right</option><option>Restricted - Vertical</option><option>Paralysis</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis & Plan:</legend>
+        <div class="row">
+          <textarea placeholder="Diagnosis" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Medications / Eye Drops" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Investigations (e.g., OCT, VF, Fundus)" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Surgical Plan / Referral" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Family History:</legend>
+        <div class="row">
+          <label><input type="checkbox" /> Glaucoma</label>
+          <label><input type="checkbox" /> Cataract</label>
+          <label><input type="checkbox" /> Macular Degeneration</label>
+          <label><input type="checkbox" /> Retinal Detachment</label>
+          <label><input type="checkbox" /> Keratoconus</label>
+          <label><input type="checkbox" /> Diabetes-related Eye Disease</label>
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Other Family Eye Conditions" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Referrals & Test Orders:</legend>
+        <div class="row">
+          <a href="#" class="action-btn">OCT</a>
+          <a href="#" class="action-btn">Visual Field</a>
+          <a href="#" class="action-btn">Fundus Photo</a>
+          <a href="#" class="action-btn">Corneal Topography</a>
+          <a href="#" class="action-btn">Surgical Booking</a>
+          <a href="#" class="action-btn">Refer Retina</a>
+          <a href="#" class="action-btn">Refer Glaucoma</a>
+          <a href="#" class="action-btn">Refer Pediatric Ophth</a>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

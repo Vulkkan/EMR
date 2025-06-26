@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accident & Emergency Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-header h2 { margin: 0; }
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    input[type="text"], select, textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+    input[type="text"] {
+      appearance: none;
+      background-image: none;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='gray'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 8px 10px;
+    }
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Accident & Emergency Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+    <form>
+      <fieldset>
+        <legend>Arrival Information</legend>
+        <div class="row">
+          <input type="text" placeholder="Arrival Mode (e.g., Ambulance, Walk-in)" />
+          <select>
+            <option disabled selected>Level of Consciousness</option>
+            <option>Alert</option>
+            <option>Responds to Voice</option>
+            <option>Responds to Pain</option>
+            <option>Unconscious</option>
+          </select>
+          <select>
+            <option disabled selected>Triaged Severity</option>
+            <option>Critical</option>
+            <option>Urgent</option>
+            <option>Stable</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Chief Complaint & History</legend>
+        <div class="row">
+          <textarea placeholder="Chief Complaint / Incident Description" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Relevant Medical History / Medications / Allergies" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Vital Signs</legend>
+        <div class="row">
+          <input type="text" placeholder="Blood Pressure (mmHg)" />
+          <input type="text" placeholder="Heart Rate (bpm)" />
+          <input type="text" placeholder="Respiratory Rate" />
+          <input type="text" placeholder="Temperature (°C)" />
+          <input type="text" placeholder="O2 Saturation (%)" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Examination Findings</legend>
+        <div class="row">
+          <textarea placeholder="Primary Survey (Airway, Breathing, Circulation)" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Secondary Survey / Focused Assessment" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis & Emergency Management</legend>
+        <div class="row">
+          <textarea placeholder="Provisional Diagnosis" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Immediate Interventions (IVF, CPR, Oxygen, Meds)" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Investigations Ordered (Labs, Imaging, ECG)" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Disposition</legend>
+        <div class="row">
+          <select>
+            <option disabled selected>Outcome</option>
+            <option>Admitted</option>
+            <option>Transferred</option>
+            <option>Discharged</option>
+            <option>Deceased</option>
+          </select>
+          <textarea placeholder="Referral / Admission Details" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <a href="#" class="action-btn">Notify Surgeon</a>
+          <a href="#" class="action-btn">Order X-ray</a>
+          <a href="#" class="action-btn">CT/MRI</a>
+          <a href="#" class="action-btn">Refer Specialist</a>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOPD Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 { margin: 0; }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>General Outpatient (GOPD) Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Vital Signs:</legend>
+        <div class="row">
+          <input type="text" placeholder="Blood Pressure (e.g., 120/80 mmHg)" />
+          <input type="text" placeholder="Pulse Rate (bpm)" />
+          <input type="text" placeholder="Respiratory Rate (breaths/min)" />
+          <input type="text" placeholder="Temperature (°C)" />
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Weight (kg)" />
+          <input type="text" placeholder="Height (cm)" />
+          <input type="text" placeholder="BMI" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Clinical Notes:</legend>
+        <div class="row">
+          <textarea placeholder="Presenting Complaint / History of Present Illness" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Examination Findings" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Diagnosis / Impression" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Plan / Treatment" rows="2"></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row" style="gap: 8px; flex-wrap: wrap;">
+          <a href="lab.html" class="action-btn">Lab</a>
+          <a href="xray.html" class="action-btn">X-Ray</a>
+          <a href="medication.html" class="action-btn">Medication</a>
+          <a href="admission.html" class="action-btn">Admission</a>
+          <a href="referral.html" class="action-btn">Referral</a>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Doctor's Note:</legend>
+        <div class="row">
+          <textarea placeholder="Additional Comments or Instructions" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

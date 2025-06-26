@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surgical Clinic</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 24px;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: block;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    input[type="text"],
+    select {
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      color: #333;
+      flex: 1;
+      min-width: 200px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px 16px;
+    }
+
+    input[readonly] {
+      background-color: #f5f5f5;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .plan-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .plan-buttons button {
+      background-color: #0366d6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 12px 28px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+
+      .plan-buttons {
+        flex-direction: column;
+      }
+
+      .save-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Surgical Clinic Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Consultation Details</legend>
+        <div class="row">
+          <input type="text" id="visitDate" readonly />
+          <select>
+            <option disabled selected>Select Visit Type</option>
+            <option>New Surgery Case</option>
+            <option>Follow-up</option>
+            <option>Post-operative</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Presenting Complaint</legend>
+        <textarea placeholder="Describe the surgical complaint or symptoms..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Past Surgical History</legend>
+        <textarea placeholder="Detail any previous surgeries, dates, outcomes..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Examination Findings</legend>
+        <textarea placeholder="Enter physical examination findings..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis</legend>
+        <textarea placeholder="Enter preliminary or confirmed diagnosis..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Pre-operative Plan</legend>
+        <textarea placeholder="Pre-op investigations, instructions, consent..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Operative Findings</legend>
+        <textarea placeholder="Details from surgery (if applicable)..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Post-operative Plan</legend>
+        <textarea placeholder="Monitoring, medications, wound care..."></textarea>
+        <div class="plan-buttons">
+          <button type="button" onclick="location.href='lab.html'">Lab</button>
+          <button type="button" onclick="location.href='xray.html'">X-Ray</button>
+          <button type="button" onclick="location.href='medication.html'">Medication</button>
+          <button type="button" onclick="location.href='admission.html'">Admission</button>
+          <button type="button" onclick="location.href='referral.html'">Referral</button>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date().toISOString().split("T")[0];
+      document.getElementById("visitDate").value = today;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orthopaedics Clinic Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-header h2 { margin: 0; }
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    input[type="text"], select, textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+    input[type="text"] {
+      appearance: none;
+      background-image: none;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='gray'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 8px 10px;
+    }
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Orthopaedics Clinic Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+    <form>
+      <fieldset>
+        <legend>Patient History</legend>
+        <div class="row">
+          <textarea placeholder="Presenting Complaint" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="History of Present Illness" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Past Orthopaedic History / Previous Fractures or Surgeries" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <select><option disabled selected>History of Trauma?</option><option>Yes</option><option>No</option></select>
+          <select><option disabled selected>Type of Injury</option><option>Fracture</option><option>Sprain</option><option>Dislocation</option><option>Strain</option><option>Contusion</option><option>Open Wound</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Physical Examination</legend>
+        <div class="row">
+          <input type="text" placeholder="Affected Area (e.g., Left Knee, Right Wrist)" />
+          <select><option disabled selected>Swelling</option><option>None</option><option>Mild</option><option>Moderate</option><option>Severe</option></select>
+          <select><option disabled selected>Deformity</option><option>Present</option><option>Absent</option></select>
+          <select><option disabled selected>Tenderness</option><option>Yes</option><option>No</option></select>
+        </div>
+        <div class="row">
+          <select><option disabled selected>Range of Motion</option><option>Full</option><option>Restricted</option><option>Absent</option></select>
+          <select><option disabled selected>Muscle Strength</option><option>Normal</option><option>Reduced</option><option>Paralysis</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis & Management Plan</legend>
+        <div class="row">
+          <textarea placeholder="Working Diagnosis" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Investigations (e.g., X-ray, CT, MRI)" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Treatment Plan (e.g., POP, Cast, Surgery, Physiotherapy)" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Referrals & Procedures</legend>
+        <div class="row">
+          <a href="#" class="action-btn">X-ray</a>
+          <a href="#" class="action-btn">MRI</a>
+          <a href="#" class="action-btn">CT Scan</a>
+          <a href="#" class="action-btn">Physiotherapy</a>
+          <a href="#" class="action-btn">Surgical Booking</a>
+          <a href="#" class="action-btn">Refer Orthopaedic Surgeon</a>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

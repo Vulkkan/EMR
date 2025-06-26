@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Antenatal Registration</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-header h2 { margin: 0; }
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      resize: vertical;
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: white url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+      background-size: 16px 16px;
+      padding-right: 30px;
+    }
+    input[disabled] {
+      background-color: #f0f0f0;
+    }
+    input.flatpickr-input {
+      background: white url("data:image/svg+xml;utf8,<svg fill='gray' xmlns='http://www.w3.org/2000/svg' height='18' width='18' viewBox='0 0 24 24'><path d='M7 10h5v5H7z'/><path d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM19 19H5V8h14v11z'/></svg>") no-repeat right 10px center;
+      background-size: 18px 18px;
+      cursor: pointer;
+    }
+    .footer, .button-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .save-btn, .quick-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 18px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .quick-btn {
+      background-color: #555;
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>New Antenatal Registration</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Patient Information</legend>
+        <div class="row">
+          <select required>
+            <option disabled selected>Title *</option>
+            <option>Mrs</option><option>Miss</option><option>Ms</option><option>Dr</option>
+          </select>
+          <input type="text" placeholder="Full Name *" required />
+          <input type="text" placeholder="Phone Number *" required />
+        </div>
+        <div class="row">
+          <input type="text" id="dob" placeholder="Date of Birth *" required />
+          <input type="text" id="age" placeholder="Age" disabled />
+          <select required>
+            <option disabled selected>Marital Status</option>
+            <option>Single</option><option>Married</option><option>Divorced</option>
+          </select>
+          <select>
+            <option disabled selected>Religion</option>
+            <option>Christianity</option><option>Islam</option><option>Traditional</option><option>Other</option>
+          </select>
+        </div>
+        <div class="row">
+          <input type="text" placeholder="Home Address" />
+          <input type="text" placeholder="Email Address (Optional)" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Obstetric History</legend>
+        <div class="row">
+          <input type="number" placeholder="Gravida (No. of pregnancies)" />
+          <input type="number" placeholder="Para (No. of deliveries)" />
+          <input type="number" placeholder="Living Children" />
+        </div>
+        <div class="row">
+          <input type="text" id="lmp" placeholder="Last Menstrual Period (LMP)" />
+          <input type="text" id="edd" placeholder="Estimated Due Date (EDD)" />
+        </div>
+        <div class="row">
+          <select>
+            <option disabled selected>Previous Delivery Mode</option>
+            <option>Vaginal</option><option>Caesarean (CS)</option><option>Assisted</option>
+          </select>
+          <select>
+            <option disabled selected>Any Complications?</option>
+            <option>No</option><option>Yes - Minor</option><option>Yes - Major</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Medical & Surgical History</legend>
+        <div class="row">
+          <select>
+            <option disabled selected>Known Conditions</option>
+            <option>None</option><option>Hypertension</option><option>Diabetes</option>
+            <option>Sickle Cell</option><option>Asthma</option><option>Others...</option>
+          </select>
+          <input type="text" placeholder="Past Surgeries" />
+          <input type="text" placeholder="Drug Allergies" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Social & Lifestyle</legend>
+        <div class="row">
+          <select>
+            <option disabled selected>Occupation</option>
+            <option>Trader</option><option>Teacher</option><option>Civil Servant</option>
+            <option>Unemployed</option><option>Others...</option>
+          </select>
+          <select>
+            <option disabled selected>Education Level</option>
+            <option>None</option><option>Primary</option><option>Secondary</option><option>Tertiary</option>
+          </select>
+          <select>
+            <option disabled selected>Alcohol Use</option>
+            <option>No</option><option>Yes</option>
+          </select>
+          <select>
+            <option disabled selected>Smoking</option>
+            <option>No</option><option>Yes</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Partner’s Information</legend>
+        <div class="row">
+          <input type="text" placeholder="Partner's Full Name" />
+          <input type="text" placeholder="Partner's Occupation" />
+          <input type="text" placeholder="Partner's Phone" />
+        </div>
+        <div class="row">
+          <select>
+            <option disabled selected>Partner's Blood Group</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+          </select>
+          <select>
+            <option disabled selected>Partner's Genotype</option>
+            <option>AA</option><option>AS</option><option>SS</option><option>AC</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Current Pregnancy Tests</legend>
+        <div class="row">
+          <input type="text" placeholder="Booking Weight (kg)" />
+          <input type="text" placeholder="Blood Pressure" />
+          <input type="text" placeholder="Urinalysis Result" />
+        </div>
+        <div class="row">
+          <input type="text" placeholder="HIV Status" />
+          <input type="text" placeholder="Hepatitis B Status" />
+          <input type="text" placeholder="Malaria RDT" />
+        </div>
+        <div class="row">
+          <select>
+            <option disabled selected>Blood Group</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+          </select>
+          <select>
+            <option disabled selected>Genotype</option>
+            <option>AA</option><option>AS</option><option>SS</option><option>AC</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Plan Notes</legend>
+        <textarea placeholder="Enter notes or plan..."></textarea>
+      </fieldset>
+
+      <div class="button-row">
+        <button class="quick-btn" type="button">Lab</button>
+        <button class="quick-btn" type="button">X-Ray</button>
+        <button class="quick-btn" type="button">Medication</button>
+        <button class="quick-btn" type="button">Admission</button>
+        <button class="quick-btn" type="button">Referral</button>
+      </div>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save Registration</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#dob", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates, dateStr) {
+        const birthDate = new Date(dateStr);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+        document.getElementById("age").value = age + " years";
+      }
+    });
+
+    flatpickr("#lmp", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates, dateStr) {
+        const lmpDate = new Date(dateStr);
+        const edd = new Date(lmpDate);
+        edd.setDate(edd.getDate() + 280); // 40 weeks
+        const formatted = edd.toISOString().split("T")[0];
+        document.getElementById("edd").value = formatted;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Clinic Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 { margin: 0; }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    form fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+    }
+
+    select,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+      background-color: white;
+      color: #333;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='gray'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 8px 10px;
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #024ea2;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .save-btn {
+      background-color: #0366d6;
+      color: white;
+      padding: 10px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="modal-header">
+      <h2>Dental Clinic Form</h2>
+      <button class="close-btn">✖</button>
+    </div>
+
+    <form>
+      <fieldset>
+        <legend>Chief Complaint & History:</legend>
+        <div class="row">
+          <textarea placeholder="Chief Complaint" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="History of Present Illness" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <select><option disabled selected>Oral Hygiene Status</option><option>Good</option><option>Fair</option><option>Poor</option></select>
+          <select><option disabled selected>Tooth Brushing Frequency</option><option>Once daily</option><option>Twice daily</option><option>Occasionally</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dental Examination:</legend>
+        <div class="row">
+          <select><option disabled selected>Teeth Condition</option><option>Sound</option><option>Decayed</option><option>Missing</option><option>Filled</option><option>Impacted</option></select>
+          <select><option disabled selected>Gums Condition</option><option>Healthy</option><option>Bleeding</option><option>Swollen</option><option>Receding</option><option>Ulcerated</option></select>
+          <select><option disabled selected>Tongue / Floor of Mouth</option><option>Normal</option><option>Lesion present</option><option>Restricted movement</option></select>
+        </div>
+        <div class="row">
+          <select><option disabled selected>Temporomandibular Joint (TMJ)</option><option>Normal</option><option>Clicking</option><option>Dislocated</option></select>
+          <select><option disabled selected>Occlusion</option><option>Normal</option><option>Class I</option><option>Class II</option><option>Class III</option><option>Open bite</option><option>Crossbite</option><option>Overbite</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Symptoms:</legend>
+        <div class="row">
+          <label><input type="checkbox" /> Toothache</label>
+          <label><input type="checkbox" /> Bleeding Gums</label>
+          <label><input type="checkbox" /> Bad Breath</label>
+          <label><input type="checkbox" /> Sensitivity</label>
+          <label><input type="checkbox" /> Swelling</label>
+          <label><input type="checkbox" /> Difficulty Chewing</label>
+          <label><input type="checkbox" /> Loose Teeth</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dental Charting:</legend>
+        <div class="row">
+          <select><option disabled selected>Select Tooth Number</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option></select>
+          <select><option disabled selected>Condition</option><option>Sound</option><option>Decayed</option><option>Missing</option><option>Filled</option><option>Impacted</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Diagnosis & Treatment Plan:</legend>
+        <div class="row">
+          <select><option disabled selected>Probable Diagnosis</option><option>Caries</option><option>Pulpitis</option><option>Gingivitis</option><option>Periodontitis</option><option>Periapical Abscess</option><option>Impaction</option><option>TMJ Disorder</option><option>Malocclusion</option><option>Oral Ulcer</option><option>Other</option></select>
+        </div>
+        <div class="row">
+          <select><option disabled selected>Anesthesia Used</option><option>None</option><option>Lidocaine</option><option>Articaine</option><option>Mepivacaine</option><option>Bupivacaine</option></select>
+        </div>
+        <div class="row">
+          <textarea placeholder="Medications Prescribed (e.g., Amoxicillin, Ibuprofen)" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <textarea placeholder="Treatment Plan (e.g., Scaling, Extraction, Restoration)" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Additional Orders & Follow-up:</legend>
+        <div class="row">
+          <select><option disabled selected>X-ray Type Ordered</option><option>None</option><option>Periapical</option><option>Bitewing</option><option>OPG</option><option>CBCT</option></select>
+        </div>
+        <div class="row">
+          <textarea placeholder="Follow-Up Plan" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Referrals & Procedures:</legend>
+        <div class="row">
+          <a href="#" class="action-btn">Scaling & Polishing</a>
+          <a href="#" class="action-btn">Tooth Extraction</a>
+          <a href="#" class="action-btn">Restorative Procedure</a>
+          <a href="#" class="action-btn">X-Ray</a>
+          <a href="#" class="action-btn">Refer Maxillofacial</a>
+          <a href="#" class="action-btn">Orthodontics</a>
+          <a href="#" class="action-btn">Prosthodontics</a>
+        </div>
+      </fieldset>
+
+      <div class="footer">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
