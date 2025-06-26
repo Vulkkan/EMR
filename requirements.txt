@@ -43,5 +43,5 @@ urllib3
 uvicorn
 watchfiles
 websockets
-pydantic==1.10.15
+pydantic
 setuptools
