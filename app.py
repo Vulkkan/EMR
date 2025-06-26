@@ -151,6 +151,3 @@ async def addPatientPage(request: Request):
 # async def render_template(path: str, request: Request):
 #     return templates.TemplateResponse(f"{path}.html", {"request": request})
 
-
-if __name__ == '__main__':
-    app.run(debug=True,host=config['host'],port=config['port'])
